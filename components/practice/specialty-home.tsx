@@ -141,18 +141,14 @@ export function SpecialtyHome({ specialty }: Props) {
 
           <div className="flex flex-wrap gap-2">
             {answeredCount < total && (
-              <Button asChild>
-                <Link href={`/practice/${specialty}/session?mode=new`}>
-                  {t("startPracticing")}
-                </Link>
+              <Button render={<Link href={`/practice/${specialty}/session?mode=new`} />}>
+                {t("startPracticing")}
               </Button>
             )}
 
             {wrongCount > 0 && (
-              <Button variant="outline" asChild>
-                <Link href={`/practice/${specialty}/session?mode=retry`}>
-                  {t("retryWrong", { count: wrongCount })}
-                </Link>
+              <Button variant="outline" render={<Link href={`/practice/${specialty}/session?mode=retry`} />}>
+                {t("retryWrong", { count: wrongCount })}
               </Button>
             )}
 

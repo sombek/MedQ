@@ -111,9 +111,9 @@ export function SessionClient({ specialty, mode }: Props) {
       <Card className="mx-auto w-full max-w-3xl">
         <CardContent className="flex flex-col items-center gap-6 p-8 text-center">
           <p className="text-lg font-medium">{doneMessage}</p>
-          <Button asChild>
-            <Link href={`/practice/${specialty}`}>{t("backToSpecialty")}</Link>
-          </Button>
+          <Button render={<Link href={`/practice/${specialty}`} />}>
+              {t("backToSpecialty")}
+            </Button>
         </CardContent>
       </Card>
     );
