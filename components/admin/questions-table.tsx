@@ -54,6 +54,7 @@ export function QuestionsTable() {
   const questions = (data?.questions ?? []) as QuestionRow[];
 
   const handleAdd = async (values: {
+    specialty: string;
     stem: string;
     choices: string[];
     correctIndex: number;
@@ -81,6 +82,7 @@ export function QuestionsTable() {
   const handleEdit =
     (q: QuestionRow) =>
     async (values: {
+      specialty: string;
       stem: string;
       choices: string[];
       correctIndex: number;
@@ -134,6 +136,7 @@ export function QuestionsTable() {
             <TableHeader>
               <TableRow>
                 <TableHead>{t("columns.stem")}</TableHead>
+                <TableHead className="w-36">{t("columns.specialty")}</TableHead>
                 <TableHead className="w-48">{t("columns.tags")}</TableHead>
                 <TableHead className="w-24">{t("columns.published")}</TableHead>
                 <TableHead className="w-32 text-end">
@@ -145,6 +148,7 @@ export function QuestionsTable() {
               {questions.map((q) => (
                 <TableRow key={q.id}>
                   <TableCell className="max-w-md truncate">{q.stem}</TableCell>
+                  <TableCell className="w-36 text-sm">{q.specialty ?? "—"}</TableCell>
                   <TableCell>
                     <div className="flex flex-wrap gap-1">
                       {q.tags.map((tag) => (

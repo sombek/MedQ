@@ -25,11 +25,13 @@ import {
   type QuestionFormValues,
   type QuestionRow,
 } from "@/lib/questions";
+import { SPECIALTIES } from "@/lib/specialties";
 
 type Props = {
   trigger: ReactElement;
   initial?: QuestionRow;
   onSubmit: (data: {
+    specialty: string;
     stem: string;
     choices: string[];
     correctIndex: number;
@@ -49,6 +51,7 @@ export function QuestionDialog({ trigger, initial, onSubmit }: Props) {
   const form = useForm<QuestionFormValues>({
     resolver: zodResolver(questionFormSchema as any),
     defaultValues: {
+      specialty: initial?.specialty ?? "internal-medicine",
       stem: initial?.stem ?? "",
       choices: initial?.choices ?? ["", "", "", ""],
       correctIndex: initial?.correctIndex ?? 0,
@@ -60,6 +63,7 @@ export function QuestionDialog({ trigger, initial, onSubmit }: Props) {
 
   useEffect(() => {
     form.reset({
+      specialty: initial?.specialty ?? "internal-medicine",
       stem: initial?.stem ?? "",
       choices: initial?.choices ?? ["", "", "", ""],
       correctIndex: initial?.correctIndex ?? 0,
@@ -71,6 +75,7 @@ export function QuestionDialog({ trigger, initial, onSubmit }: Props) {
 
   const handleSubmit = form.handleSubmit(async (values) => {
     await onSubmit({
+      specialty: values.specialty,
       stem: values.stem.trim(),
       choices: values.choices.map((c) => c.trim()),
       correctIndex: values.correctIndex,
@@ -95,6 +100,21 @@ export function QuestionDialog({ trigger, initial, onSubmit }: Props) {
           onSubmit={handleSubmit}
           className="flex flex-col gap-4"
         >
+          <div className="flex flex-col gap-2">
+            <Label htmlFor="specialty">{t("specialty")}</Label>
+            <select
+              id="specialty"
+              {...form.register("specialty")}
+              className="border-input bg-background ring-offset-background focus-visible:ring-ring h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+            >
+              {SPECIALTIES.filter((s) => s.enabled).map((s) => (
+                <option key={s.id} value={s.id}>
+                  {s.label.en}
+                </option>
+              ))}
+            </select>
+          </div>
+
           <div className="flex flex-col gap-2">
             <Label htmlFor="stem">{t("fields.stem")}</Label>
             <Textarea id="stem" rows={4} {...form.register("stem")} />
