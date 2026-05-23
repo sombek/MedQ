@@ -34,7 +34,9 @@ export function UserMenu() {
         <span className="sr-only">{auth.user.email}</span>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end">
-        <DropdownMenuLabel>{auth.user.email}</DropdownMenuLabel>
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>{auth.user.email}</DropdownMenuLabel>
+        </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handleSignOut}>
           <SignOutIcon className="me-2 size-4" />
