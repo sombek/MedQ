@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MedQ
 
-## Getting Started
+Interactive medical exam platform — bilingual (English / Arabic), built with Next.js 16, shadcn/studio, and InstantDB.
 
-First, run the development server:
+## Tech stack
+
+- **Framework:** Next.js 16 App Router (Turbopack), React 19
+- **Styling:** Tailwind v4 + shadcn/studio (Maia preset on Base UI)
+- **i18n:** `next-intl` with `/en` and `/ar` routes; IBM Plex Sans Arabic for Arabic typography
+- **Backend:** [InstantDB](https://instantdb.com) — auth, real-time data, and permissions
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create `.env` in the project root with:
 
-## Learn More
+```
+NEXT_PUBLIC_INSTANT_APP_ID=<your-instant-app-id>
+```
 
-To learn more about Next.js, take a look at the following resources:
+You get the app id by running:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npx instant-cli@latest login
+npx instant-cli@latest init
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Schema and permissions
 
-## Deploy on Vercel
+Schema lives in `instant.schema.ts`. Permissions live in `instant.perms.ts`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Push changes to your Instant app with:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npx instant-cli@latest push schema
+npx instant-cli@latest push perms
+```
+
+## Admin bootstrap
+
+The first admin user must be promoted manually because the schema permissions intentionally prevent self-promotion:
+
+1. Sign in normally at `/en/login` (or `/ar/login`) with your admin email. A `profiles` row is created automatically with `isAdmin=false`.
+2. Open the [Instant dashboard](https://instantdb.com/dash) → your app → **Explorer** → `profiles`.
+3. Find the row whose linked `$users.email` is yours and set `isAdmin = true`.
+4. Reload `/en/admin/questions`. You now have admin access.
+
+Any admin can toggle another user's `isActive` from the admin UI at `/admin/users`, but `isAdmin` itself must always be edited via the Instant dashboard (by design — prevents privilege escalation through the app).
+
+## Project structure
+
+```
+app/[locale]/            # Localized routes (landing, login, practice, admin)
+components/              # Feature-scoped React components
+hooks/                   # Client hooks (useProfile)
+i18n/                    # next-intl routing + navigation
+lib/                     # db client, pure helpers, question schema
+messages/                # en.json, ar.json translations
+instant.schema.ts        # InstantDB entities and links
+instant.perms.ts         # InstantDB rules (deny-by-default)
+```
