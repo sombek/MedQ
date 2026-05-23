@@ -14,6 +14,7 @@ const _schema = i.schema({
     }),
 
     questions: i.entity({
+      specialty: i.string().indexed(),
       stem: i.string(),
       choices: i.json<string[]>(),
       correctIndex: i.number(),

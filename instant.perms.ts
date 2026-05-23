@@ -51,7 +51,7 @@ const rules = {
       view: "isOwner || isAdmin",
       create: "isCreatingOwn && isActiveUser",
       update: "false",
-      delete: "isAdmin",
+      delete: "isAdmin || isOwner",
     },
     bind: {
       isOwner: "auth.id == data.userId",
