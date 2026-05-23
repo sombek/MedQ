@@ -27,6 +27,7 @@ const _schema = i.schema({
       selectedIndex: i.number(),
       isCorrect: i.boolean().indexed(),
       answeredAt: i.date().indexed(),
+      userId: i.string().indexed(),
     }),
   },
 

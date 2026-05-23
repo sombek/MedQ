@@ -54,8 +54,8 @@ const rules = {
       delete: "isAdmin",
     },
     bind: {
-      isOwner: "auth.id in data.ref('user.id')",
-      isCreatingOwn: "auth.id in newData.ref('user.id')",
+      isOwner: "auth.id == data.userId",
+      isCreatingOwn: "auth.id != null && auth.id == data.userId",
       isActiveUser: "true in auth.ref('$user.profile.isActive')",
       isAdmin: "true in auth.ref('$user.profile.isAdmin')",
     },

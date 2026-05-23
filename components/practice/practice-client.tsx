@@ -103,6 +103,7 @@ function SignedInPractice() {
             selectedIndex,
             isCorrect,
             answeredAt: new Date().toISOString(),
+            userId,
           })
           .link({ user: userId, question: current.id })
       );
