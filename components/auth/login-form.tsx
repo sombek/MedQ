@@ -41,30 +41,7 @@ export function LoginForm() {
     if (!code) return;
     setSubmitting(true);
     try {
-      const result = await db.auth.signInWithMagicCode({ email, code });
-
-      if (result.user) {
-        const existing = await db.queryOnce({
-          profiles: {
-            $: { where: { "user.id": result.user.id }, limit: 1 },
-          },
-        });
-
-        if (!existing.data.profiles.length) {
-          // Use the user ID as the profile ID so concurrent bootstrap calls
-          // are idempotent (second transact is a no-op upsert).
-          await db.transact(
-            db.tx.profiles[result.user.id]
-              .update({
-                isAdmin: false,
-                isActive: true,
-                createdAt: new Date().toISOString(),
-              })
-              .link({ user: result.user.id })
-          );
-        }
-      }
-
+      await db.auth.signInWithMagicCode({ email, code });
       router.push("/practice");
     } catch (err) {
       const message = err instanceof Error ? err.message : t("errorGeneric");

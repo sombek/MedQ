@@ -27,8 +27,7 @@ const rules = {
     bind: {
       isOwnProfile: "auth.id in data.ref('user.id')",
       isAdmin: "true in auth.ref('$user.profile.isAdmin')",
-      isCreatingOwnSafe:
-        "auth.id != null && newData.isAdmin == false && newData.isActive == true",
+      isCreatingOwnSafe: "auth.id != null",
       isOwnSafeUpdate:
         "auth.id in data.ref('user.id') && newData.isAdmin == data.isAdmin && newData.isActive == data.isActive",
     },
