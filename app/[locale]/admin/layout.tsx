@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 
 import { AdminGuard } from "@/components/admin/admin-guard";
 import { AdminNav } from "@/components/admin/admin-nav";
+import { ModeToggle } from "@/components/admin/mode-toggle";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { UserMenu } from "@/components/auth/user-menu";
 import Logo from "@/components/shadcn-studio/logo";
@@ -31,6 +32,7 @@ export default async function AdminLayout({ children, params }: Props) {
             <Logo className="gap-3" />
           </Link>
           <div className="flex items-center gap-3">
+            <ModeToggle />
             <LanguageSwitcher />
             <UserMenu />
           </div>

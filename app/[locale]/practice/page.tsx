@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { SpecialtyPicker } from "@/components/practice/specialty-picker";
+import { ModeToggle } from "@/components/admin/mode-toggle";
 import { UserMenu } from "@/components/auth/user-menu";
 import Logo from "@/components/shadcn-studio/logo";
 import { Link } from "@/i18n/navigation";
@@ -33,6 +34,7 @@ export default async function PracticePage({ params }: Props) {
             <Logo className="gap-3" />
           </Link>
           <div className="flex items-center gap-3">
+            <ModeToggle />
             <LanguageSwitcher />
             <UserMenu />
           </div>
