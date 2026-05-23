@@ -2,6 +2,7 @@ import { z } from "zod";
 
 export type QuestionRow = {
   id: string;
+  specialty: string;
   stem: string;
   choices: string[];
   correctIndex: number;
@@ -58,6 +59,7 @@ const MAX_TAGS = 10;
  * tags string and validates it via normalizeTags.
  */
 export const questionFormSchema = z.object({
+  specialty: z.string().min(1),
   stem: z.string().min(1).max(MAX_STEM_LEN),
   choices: z
     .array(z.string().min(1).max(MAX_CHOICE_LEN))

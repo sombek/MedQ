@@ -48,7 +48,21 @@
     "noQuestions": "You've completed all available questions. Check back later!",
     "accountDisabled": "Your account has been disabled. Please contact the administrator.",
     "notSignedIn": "Please sign in to start practicing.",
-    "errorGeneric": "Something went wrong. Please try again."
+    "errorGeneric": "Something went wrong. Please try again.",
+    "comingSoon": "Coming Soon",
+    "answered": "{answered} of {total} answered",
+    "startPracticing": "Start Practicing",
+    "retryWrong": "Retry Wrong ({count})",
+    "resetAll": "Reset All",
+    "resetConfirmTitle": "Reset all progress?",
+    "resetConfirmBody": "This will delete all your answers for {specialty}. You'll start from scratch.",
+    "resetSuccess": "Progress reset.",
+    "allAnswered": "You've answered all questions in this specialty!",
+    "allRetried": "All wrong answers retried!",
+    "backToSpecialty": "Back",
+    "questions": "Questions",
+    "reviewClose": "Close",
+    "cancel": "Cancel"
   },
   "admin": {
     "nav": {
@@ -78,8 +92,10 @@
         "tagsHelp": "Comma-separated. Lowercased and trimmed on save.",
         "isPublished": "Published"
       },
+      "specialty": "Specialty",
       "columns": {
         "stem": "Stem",
+        "specialty": "Specialty",
         "tags": "Tags",
         "published": "Published",
         "actions": "Actions"

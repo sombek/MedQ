@@ -48,7 +48,21 @@
     "noQuestions": "أكملت جميع الأسئلة المتاحة. عد لاحقاً!",
     "accountDisabled": "تم تعطيل حسابك. يُرجى التواصل مع المسؤول.",
     "notSignedIn": "يُرجى تسجيل الدخول للبدء بالتدريب.",
-    "errorGeneric": "حدث خطأ ما. حاول مرة أخرى."
+    "errorGeneric": "حدث خطأ ما. حاول مرة أخرى.",
+    "comingSoon": "قريباً",
+    "answered": "{answered} من {total} سؤال",
+    "startPracticing": "ابدأ التدريب",
+    "retryWrong": "أعد الخاطئة ({count})",
+    "resetAll": "إعادة ضبط",
+    "resetConfirmTitle": "إعادة ضبط كل التقدم؟",
+    "resetConfirmBody": "سيتم حذف جميع إجاباتك في {specialty}. ستبدأ من الصفر.",
+    "resetSuccess": "تم إعادة ضبط التقدم.",
+    "allAnswered": "أجبت على جميع أسئلة هذا التخصص!",
+    "allRetried": "تمت إعادة محاولة جميع الإجابات الخاطئة!",
+    "backToSpecialty": "رجوع",
+    "questions": "الأسئلة",
+    "reviewClose": "إغلاق",
+    "cancel": "إلغاء"
   },
   "admin": {
     "nav": {
@@ -78,8 +92,10 @@
         "tagsHelp": "مفصولة بفاصلة. تُحوَّل لأحرف صغيرة عند الحفظ.",
         "isPublished": "منشور"
       },
+      "specialty": "التخصص",
       "columns": {
         "stem": "السؤال",
+        "specialty": "التخصص",
         "tags": "الوسوم",
         "published": "منشور",
         "actions": "إجراءات"
