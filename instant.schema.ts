@@ -1,57 +1,55 @@
-// Docs: https://www.instantdb.com/docs/modeling-data
-
 import { i } from "@instantdb/react";
 
 const _schema = i.schema({
   entities: {
-    $files: i.entity({
-      path: i.string().unique().indexed(),
-      url: i.string(),
-    }),
-    $streams: i.entity({
-      abortReason: i.string().optional(),
-      clientId: i.string().unique().indexed(),
-      done: i.boolean().optional(),
-      size: i.number().optional(),
-    }),
     $users: i.entity({
-      email: i.string().unique().indexed().optional(),
-      imageURL: i.string().optional(),
-      type: i.string().optional(),
+      email: i.string().unique().indexed(),
+    }),
+
+    profiles: i.entity({
+      displayName: i.string().optional(),
+      isAdmin: i.boolean().indexed(),
+      isActive: i.boolean().indexed(),
+      createdAt: i.date().indexed(),
+    }),
+
+    questions: i.entity({
+      stem: i.string(),
+      choices: i.json<string[]>(),
+      correctIndex: i.number(),
+      explanation: i.string(),
+      tags: i.json<string[]>().indexed(),
+      isPublished: i.boolean().indexed(),
+      createdAt: i.date().indexed(),
+    }),
+
+    answers: i.entity({
+      selectedIndex: i.number(),
+      isCorrect: i.boolean().indexed(),
+      answeredAt: i.date().indexed(),
     }),
   },
+
   links: {
-    $streams$files: {
-      forward: {
-        on: "$streams",
-        has: "many",
-        label: "$files",
-      },
-      reverse: {
-        on: "$files",
-        has: "one",
-        label: "$stream",
-        onDelete: "cascade",
-      },
+    userProfile: {
+      forward: { on: "$users", has: "one", label: "profile" },
+      reverse: { on: "profiles", has: "one", label: "user" },
     },
-    $usersLinkedPrimaryUser: {
-      forward: {
-        on: "$users",
-        has: "one",
-        label: "linkedPrimaryUser",
-        onDelete: "cascade",
-      },
-      reverse: {
-        on: "$users",
-        has: "many",
-        label: "linkedGuestUsers",
-      },
+    questionCreator: {
+      forward: { on: "questions", has: "one", label: "createdBy" },
+      reverse: { on: "$users", has: "many", label: "createdQuestions" },
+    },
+    answerUser: {
+      forward: { on: "answers", has: "one", label: "user" },
+      reverse: { on: "$users", has: "many", label: "answers" },
+    },
+    answerQuestion: {
+      forward: { on: "answers", has: "one", label: "question" },
+      reverse: { on: "questions", has: "many", label: "answers" },
     },
   },
-  rooms: {},
 });
 
-// This helps TypeScript display nicer intellisense
 type _AppSchema = typeof _schema;
 interface AppSchema extends _AppSchema {}
 const schema: AppSchema = _schema;
