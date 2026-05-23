@@ -8,8 +8,8 @@ const rules = {
   $users: {
     allow: {
       view: "auth.id == data.id || isAdmin",
-      create: "false",
-      update: "false",
+      create: "auth.id != null",
+      update: "auth.id == data.id || isAdmin",
       delete: "false",
     },
     bind: {
