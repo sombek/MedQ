@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
+import { toast } from "sonner";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -106,6 +107,9 @@ function SignedInPractice() {
           .link({ user: userId, question: current.id })
       );
       setSubmitted(true);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : t("errorGeneric");
+      toast.error(message);
     } finally {
       setSubmitting(false);
     }

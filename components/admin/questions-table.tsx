@@ -62,16 +62,20 @@ export function QuestionsTable() {
     isPublished: boolean;
   }) => {
     if (!auth.user) return;
-    const id = crypto.randomUUID();
-    await db.transact(
-      db.tx.questions[id]
-        .update({
-          ...values,
-          createdAt: new Date().toISOString(),
-        })
-        .link({ createdBy: auth.user.id })
-    );
-    toast.success(t("save"));
+    try {
+      const id = crypto.randomUUID();
+      await db.transact(
+        db.tx.questions[id]
+          .update({
+            ...values,
+            createdAt: new Date().toISOString(),
+          })
+          .link({ createdBy: auth.user.id })
+      );
+      toast.success(t("saveSuccess"));
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : t("errors.required"));
+    }
   };
 
   const handleEdit =
@@ -84,15 +88,23 @@ export function QuestionsTable() {
       tags: string[];
       isPublished: boolean;
     }) => {
-      await db.transact(db.tx.questions[q.id].update(values));
-      toast.success(t("save"));
+      try {
+        await db.transact(db.tx.questions[q.id].update(values));
+        toast.success(t("saveSuccess"));
+      } catch (err) {
+        toast.error(err instanceof Error ? err.message : t("errors.required"));
+      }
     };
 
   const handleDelete = async () => {
     if (!pendingDelete) return;
-    await db.transact(db.tx.questions[pendingDelete.id].delete());
-    toast.success(t("confirmDelete"));
-    setPendingDelete(null);
+    try {
+      await db.transact(db.tx.questions[pendingDelete.id].delete());
+      toast.success(t("deleteSuccess"));
+      setPendingDelete(null);
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : t("errors.required"));
+    }
   };
 
   return (

@@ -49,8 +49,12 @@ export function UsersTable() {
   const users = ((data as any)?.$users ?? []) as UserRow[];
 
   const handleToggleActive = async (profileId: string, next: boolean) => {
-    await db.transact(db.tx.profiles[profileId].update({ isActive: next }));
-    toast.success(t("columns.isActive"));
+    try {
+      await db.transact(db.tx.profiles[profileId].update({ isActive: next }));
+      toast.success(t("toggleSuccess"));
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : String(err));
+    }
   };
 
   if (!users.length) {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, type ReactElement } from "react";
+import { useEffect, useState, type ReactElement } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
@@ -43,6 +43,7 @@ const CHOICE_LETTERS = ["A", "B", "C", "D"];
 
 export function QuestionDialog({ trigger, initial, onSubmit }: Props) {
   const t = useTranslations("admin.questions");
+  const [open, setOpen] = useState(false);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const form = useForm<QuestionFormValues>({
@@ -78,10 +79,11 @@ export function QuestionDialog({ trigger, initial, onSubmit }: Props) {
       isPublished: values.isPublished,
     });
     form.reset();
+    setOpen(false);
   });
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger render={trigger} />
       <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-2xl">
         <DialogHeader>

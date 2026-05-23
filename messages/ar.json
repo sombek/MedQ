@@ -47,7 +47,8 @@
     "explanation": "الشرح",
     "noQuestions": "أكملت جميع الأسئلة المتاحة. عد لاحقاً!",
     "accountDisabled": "تم تعطيل حسابك. يُرجى التواصل مع المسؤول.",
-    "notSignedIn": "يُرجى تسجيل الدخول للبدء بالتدريب."
+    "notSignedIn": "يُرجى تسجيل الدخول للبدء بالتدريب.",
+    "errorGeneric": "حدث خطأ ما. حاول مرة أخرى."
   },
   "admin": {
     "nav": {
@@ -65,6 +66,8 @@
       "cancel": "إلغاء",
       "save": "حفظ",
       "confirmDelete": "نعم، احذف",
+      "saveSuccess": "تم حفظ السؤال.",
+      "deleteSuccess": "تم حذف السؤال.",
       "fields": {
         "stem": "نص السؤال",
         "choices": "الخيارات",
@@ -99,7 +102,8 @@
         "isActive": "نشط",
         "createdAt": "تاريخ الانضمام"
       },
-      "adminBadge": "مسؤول"
+      "adminBadge": "مسؤول",
+      "toggleSuccess": "تم تحديث حالة المستخدم."
     },
     "notAdmin": "ليس لديك صلاحية الوصول لهذا القسم."
   }

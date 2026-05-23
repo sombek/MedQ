@@ -47,7 +47,8 @@
     "explanation": "Explanation",
     "noQuestions": "You've completed all available questions. Check back later!",
     "accountDisabled": "Your account has been disabled. Please contact the administrator.",
-    "notSignedIn": "Please sign in to start practicing."
+    "notSignedIn": "Please sign in to start practicing.",
+    "errorGeneric": "Something went wrong. Please try again."
   },
   "admin": {
     "nav": {
@@ -65,6 +66,8 @@
       "cancel": "Cancel",
       "save": "Save",
       "confirmDelete": "Yes, delete",
+      "saveSuccess": "Question saved.",
+      "deleteSuccess": "Question deleted.",
       "fields": {
         "stem": "Question stem",
         "choices": "Choices",
@@ -99,7 +102,8 @@
         "isActive": "Active",
         "createdAt": "Joined"
       },
-      "adminBadge": "Admin"
+      "adminBadge": "Admin",
+      "toggleSuccess": "User status updated."
     },
     "notAdmin": "You don't have access to this area."
   }

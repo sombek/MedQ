@@ -51,9 +51,10 @@ export function LoginForm() {
         });
 
         if (!existing.data.profiles.length) {
-          const profileId = crypto.randomUUID();
+          // Use the user ID as the profile ID so concurrent bootstrap calls
+          // are idempotent (second transact is a no-op upsert).
           await db.transact(
-            db.tx.profiles[profileId]
+            db.tx.profiles[result.user.id]
               .update({
                 isAdmin: false,
                 isActive: true,
