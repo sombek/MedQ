@@ -23,7 +23,11 @@ export function ProfileBootstrap() {
 
     db.transact(
       db.tx.profiles[auth.user.id]
-        .update({ isActive: true, createdAt: new Date().toISOString() })
+        .update({
+          isAdmin: false,
+          isActive: true,
+          createdAt: new Date().toISOString(),
+        })
         .link({ user: auth.user.id })
     ).catch(() => {
       // silently retry on next render if it fails

@@ -73,7 +73,7 @@ function SignedInPractice() {
     }
   }, [questionsLoading, profileLoading, currentId, questions, answeredIds]);
 
-  if (profileLoading || questionsLoading) {
+  if (profileLoading || questionsLoading || !profile) {
     return <LoadingState />;
   }
 
@@ -81,7 +81,7 @@ function SignedInPractice() {
     return <EmptyState message={error.message} />;
   }
 
-  if (!profile?.isActive) {
+  if (!profile.isActive) {
     return <EmptyState message={t("accountDisabled")} />;
   }
 
