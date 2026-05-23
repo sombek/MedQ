@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "home": "Home",
+    "howItWorks": "How It Works",
+    "forClinics": "For Clinics",
+    "contact": "Contact",
+    "signIn": "Sign In",
+    "practice": "Practice",
+    "admin": "Admin",
+    "signOut": "Sign out"
+  },
+  "hero": {
+    "badge": "Real-time Updates",
+    "subtitle": "Smart queue management for clinics and patients",
+    "titleBefore": "Skip the Wait with",
+    "titleHighlight": "Smarter",
+    "titleAfter": "Medical Queues",
+    "descriptionLine1": "MedQ helps patients check wait times, get notified when it's their turn, and arrive at the right moment.",
+    "descriptionLine2": "Clinics reduce crowding and keep every visit running smoothly.",
+    "cta": "Sign in to start",
+    "imageAlt": "Modern hospital reception with patients waiting comfortably"
+  },
+  "language": {
+    "en": "EN",
+    "ar": "عربي"
+  },
+  "login": {
+    "title": "Sign in to MedQ",
+    "subtitle": "Enter your email and we'll send you a 6-digit code.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
+    "sendCode": "Send code",
+    "codeTitle": "Check your inbox",
+    "codeSubtitle": "We sent a code to {email}.",
+    "codeLabel": "6-digit code",
+    "codePlaceholder": "123456",
+    "verify": "Verify",
+    "resend": "Use a different email",
+    "errorGeneric": "Something went wrong. Please try again."
+  },
+  "practice": {
+    "loading": "Loading question…",
+    "submit": "Submit answer",
+    "next": "Next question",
+    "correct": "Correct",
+    "incorrect": "Incorrect",
+    "explanation": "Explanation",
+    "noQuestions": "You've completed all available questions. Check back later!",
+    "accountDisabled": "Your account has been disabled. Please contact the administrator.",
+    "notSignedIn": "Please sign in to start practicing."
+  },
+  "admin": {
+    "nav": {
+      "questions": "Questions",
+      "users": "Users"
+    },
+    "questions": {
+      "title": "Questions",
+      "empty": "No questions yet — add the first one.",
+      "add": "Add question",
+      "edit": "Edit question",
+      "delete": "Delete question",
+      "deleteConfirmTitle": "Delete this question?",
+      "deleteConfirmBody": "This permanently deletes the question and any answers linked to it.",
+      "cancel": "Cancel",
+      "save": "Save",
+      "confirmDelete": "Yes, delete",
+      "fields": {
+        "stem": "Question stem",
+        "choices": "Choices",
+        "choice": "Choice {letter}",
+        "correctIndex": "Correct answer",
+        "explanation": "Explanation",
+        "tags": "Tags",
+        "tagsHelp": "Comma-separated. Lowercased and trimmed on save.",
+        "isPublished": "Published"
+      },
+      "columns": {
+        "stem": "Stem",
+        "tags": "Tags",
+        "published": "Published",
+        "actions": "Actions"
+      },
+      "errors": {
+        "required": "Required",
+        "fourChoices": "Provide exactly four choices.",
+        "correctIndexRange": "Pick one of the four choices.",
+        "tooLong": "Too long (max {max} characters).",
+        "tagsRequired": "Add at least one tag."
+      }
+    },
+    "users": {
+      "title": "Users",
+      "empty": "No users yet.",
+      "columns": {
+        "email": "Email",
+        "displayName": "Name",
+        "isAdmin": "Admin",
+        "isActive": "Active",
+        "createdAt": "Joined"
+      },
+      "adminBadge": "Admin"
+    },
+    "notAdmin": "You don't have access to this area."
+  }
+}
