@@ -9,8 +9,10 @@ import { fontVariables } from "@/lib/fonts";
 import { routing } from "@/i18n/routing";
 
 export const metadata: Metadata = {
-  title: "MedQ | Medical Question Bank for Students",
-  description: "Master medical concepts and ace your exams with MedQ. Practice high-yield questions with detailed explanations.",
+  title: {
+    template: "%s | MedQ",
+    default: "MedQ",
+  },
 };
 
 type Props = {
