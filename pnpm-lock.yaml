@@ -14,6 +14,9 @@ importers:
       '@hookform/resolvers':
         specifier: ^5.4.0
         version: 5.4.0(react-hook-form@7.76.1(react@19.2.4))
+      '@instantdb/admin':
+        specifier: ^1.0.39
+        version: 1.0.39
       '@instantdb/core':
         specifier: ^1.0.39
         version: 1.0.39
@@ -553,8 +556,15 @@ packages:
       '@types/node':
         optional: true
 
+  '@instantdb/admin@1.0.39':
+    resolution: {integrity: sha512-LJJ5mLHRHGDvEAW0oeWoYsC+qf9q4+/nzeh1eOFxB2KRchpB4AvpGnvd+NHzDv2UGc9AGwWFvoTdGTrcCr0wEQ==}
+
   '@instantdb/core@1.0.39':
     resolution: {integrity: sha512-upIeDwKXq7tyQ2euSbl+5g4evY2HVe4AeInTSozJRRL6GDitNMLN5ts/tIyNtEepHvSQ1yZaD/f02/rlvTr+TA==}
+
+  '@instantdb/eventsource@4.1.0-2':
+    resolution: {integrity: sha512-k2uzhsRzdD7hzV3fv+eoCRNeluZcj4pDfUKKAhvIS6xshc7zHkaM9/m3vxBgaYoNVmvOyaGp84TcHG0/Bp7k4g==}
+    engines: {node: '>=20.0.0'}
 
   '@instantdb/react-common@1.0.39':
     resolution: {integrity: sha512-DSl+JfwQzNQfI8HQHENl0Q6qHQk/gZhWvjhQcaTIOPemcA6J/TZO8woKCiPleJpWN6rO8mz4NGk7T5d3j7aDsQ==}
@@ -568,6 +578,9 @@ packages:
 
   '@instantdb/version@1.0.39':
     resolution: {integrity: sha512-JhOmjURaAkW8RQZi7kvpaao73MTT+A2jTSlJKx+wdm7SAIQJsIIyrN8F17TyLzEb2rXXnIWXFGis6lv+3fUMwg==}
+
+  '@instantdb/webhooks@1.0.39':
+    resolution: {integrity: sha512-KCsfO5Tp/gnDCng/+r4JTIhjZsxWNxQlSIlS+tBf5GYCYr0Ufr/XVq9tR3Z2MkHtFHJCNBYYgFYkZxOKBG7evg==}
 
   '@jridgewell/gen-mapping@0.3.13':
     resolution: {integrity: sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==}
@@ -3859,11 +3872,24 @@ snapshots:
     optionalDependencies:
       '@types/node': 20.19.41
 
+  '@instantdb/admin@1.0.39':
+    dependencies:
+      '@instantdb/core': 1.0.39
+      '@instantdb/eventsource': 4.1.0-2
+      '@instantdb/version': 1.0.39
+      '@instantdb/webhooks': 1.0.39
+      cookie: 1.1.1
+      uuid: 11.1.1
+
   '@instantdb/core@1.0.39':
     dependencies:
       '@instantdb/version': 1.0.39
       mutative: 1.3.0
       uuid: 11.1.1
+
+  '@instantdb/eventsource@4.1.0-2':
+    dependencies:
+      eventsource-parser: 3.0.8
 
   '@instantdb/react-common@1.0.39(react@19.2.4)':
     dependencies:
@@ -3880,6 +3906,10 @@ snapshots:
       react: 19.2.4
 
   '@instantdb/version@1.0.39': {}
+
+  '@instantdb/webhooks@1.0.39':
+    dependencies:
+      '@instantdb/core': 1.0.39
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:

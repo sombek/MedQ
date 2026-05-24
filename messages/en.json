@@ -2,6 +2,8 @@
   "nav": {
     "home": "Home",
     "howItWorks": "How It Works",
+    "pricing": "Pricing",
+    "faq": "FAQ",
     "practice": "Practice",
     "contact": "Contact",
     "signIn": "Sign In",
@@ -9,44 +11,98 @@
     "signOut": "Sign out"
   },
   "hero": {
-    "badge": "For Medical Students",
-    "subtitle": "The smartest question bank to test your knowledge, review detailed explanations, and prepare for clinical practice.",
+    "badge": "The Ultimate QBank for Medical Students",
+    "subtitle": "Elevate your medical knowledge with our premium question bank. Master complex concepts, review in-depth explanations, and build the clinical confidence you need.",
     "titleBefore": "Master Medicine.",
-    "titleHighlight": "Ace",
+    "titleHighlight": "Dominate",
     "titleAfter": "Your Exams.",
-    "descriptionLine1": "Practice with high-yield questions designed to challenge your understanding.",
-    "descriptionLine2": "Track your progress and master every specialty.",
-    "cta": "Start Practicing",
-    "imageAlt": "Medical student studying on a laptop"
+    "descriptionLine1": "Engage with high-yield, board-style questions curated by top medical professionals.",
+    "descriptionLine2": "Analyze your performance with advanced metrics and conquer every specialty.",
+    "cta": "Start Practicing Now",
+    "imageAlt": "Medical student excelling with MedQ",
+    "socialProof": "Trusted by 500+ medical students",
+    "statQuestions": "2,000+",
+    "statQuestionsLabel": "High-yield questions",
+    "statSpecialties": "15+",
+    "statSpecialtiesLabel": "Medical specialties",
+    "statFree": "10",
+    "statFreeLabel": "Free daily questions",
+    "previewTag": "Cardiology",
+    "previewDifficulty": "High-yield",
+    "previewProgress": "3 / 10",
+    "previewQuestion": "A 62-year-old man presents with crushing chest pain radiating to the left arm. ECG shows ST elevation in leads V1–V4. What is the most appropriate immediate management?",
+    "previewChoiceA": "Administer IV beta-blockers",
+    "previewChoiceB": "Activate primary PCI pathway",
+    "previewChoiceC": "Order a stress echocardiogram",
+    "previewChoiceD": "Start oral anticoagulation",
+    "previewCorrect": "Correct — detailed rationale available"
   },
   "howItWorks": {
-    "title": "How MedQ Works",
-    "step1Title": "Choose a Specialty",
-    "step1Desc": "Select from various medical fields to focus your study session.",
-    "step2Title": "Test Your Knowledge",
-    "step2Desc": "Answer high-yield questions designed to challenge your understanding.",
-    "step3Title": "Learn & Improve",
-    "step3Desc": "Review detailed explanations for every answer and track your progress over time."
+    "title": "Your Path to Excellence",
+    "step1Title": "Target Your Weaknesses",
+    "step1Desc": "Select specific medical specialties or systems to tailor your study sessions effectively.",
+    "step2Title": "Challenge Your Intellect",
+    "step2Desc": "Solve meticulously crafted, high-yield questions that mirror the rigor of actual board exams.",
+    "step3Title": "Master the Concepts",
+    "step3Desc": "Deepen your understanding with comprehensive rationales and track your mastery over time."
   },
   "valueProps": {
-    "title": "Why MedQ?",
-    "card1Title": "High-Yield Questions",
-    "card1Desc": "Practice questions designed to match real exam difficulty.",
-    "card2Title": "Detailed Explanations",
-    "card2Desc": "Understand the why behind every answer.",
-    "card3Title": "Track Your Progress",
-    "card3Desc": "See how you improve across specialties over time."
+    "title": "The MedQ Advantage",
+    "card1Title": "Premium High-Yield Content",
+    "card1Desc": "Questions rigorously peer-reviewed to match the exact difficulty and style of your most crucial exams.",
+    "card2Title": "Comprehensive Rationales",
+    "card2Desc": "Don't just memorize. Understand the core pathophysiology behind every correct and incorrect option.",
+    "card3Title": "Advanced Analytics",
+    "card3Desc": "Visualize your growth, pinpoint knowledge gaps, and optimize your study strategy with real-time data."
   },
   "ctaStrip": {
-    "title": "Ready to start practicing?",
-    "button": "Start Practicing"
+    "title": "Ready to transform your medical journey?",
+    "button": "Start Your Free Trial"
+  },
+  "landingPricing": {
+    "title": "Transparent Pricing",
+    "subtitle": "Begin with 10 free high-yield questions daily, then upgrade to unlock your full potential.",
+    "featureUnlimited": "Unlimited access to our premium question bank",
+    "featureApplePay": "Secure, frictionless checkout via Apple Pay",
+    "featureManualRenew": "No hidden fees. Manual renewal puts you in control.",
+    "cta": "Unlock Full Access",
+    "plans": {
+      "monthly": {
+        "name": "Monthly",
+        "price": "99.99 SAR / month"
+      },
+      "yearly": {
+        "name": "Yearly",
+        "price": "999.99 SAR / year"
+      }
+    }
+  },
+  "landingFaq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about joining MedQ.",
+    "q1": {
+      "question": "How does the free tier work?",
+      "answer": "Experience MedQ with up to 10 free questions every day. Your daily quota refreshes automatically at midnight (Riyadh Time)."
+    },
+    "q2": {
+      "question": "What do I get with a premium subscription?",
+      "answer": "You unlock unlimited, unrestricted access to our entire question bank and detailed rationales for the duration of your subscription."
+    },
+    "q3": {
+      "question": "Will my subscription auto-renew?",
+      "answer": "No. We believe in complete transparency. All renewals are currently manual, so you will never be charged unexpectedly."
+    },
+    "q4": {
+      "question": "Which payment methods do you accept?",
+      "answer": "We currently process all payments securely through Apple Pay via Moyasar."
+    }
   },
   "metadata": {
-    "title": "MedQ | Medical Question Bank for Students",
-    "description": "Master medical concepts and ace your exams. Practice high-yield questions with detailed explanations."
+    "title": "MedQ | The Premier Medical Question Bank",
+    "description": "Master medical concepts and dominate your board exams. Practice with premium, high-yield questions and comprehensive rationales."
   },
   "footer": {
-    "tagline": "Master medical concepts and ace your exams.",
+    "tagline": "Empowering the next generation of medical professionals.",
     "product": "Product",
     "howItWorks": "How It Works",
     "practice": "Practice",
@@ -97,7 +153,34 @@
     "backToSpecialty": "Back",
     "questions": "Questions",
     "reviewClose": "Close",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "dailyUsage": "{used} of {limit} free questions used today.",
+    "freeLimitReached": "You've reached today's free limit. Renew to continue.",
+    "subscriptionActiveUntil": "Unlimited access active until {date}.",
+    "renewNow": "Renew now"
+  },
+  "billing": {
+    "title": "Premium Membership",
+    "subtitle": "Select the plan that fits your journey. Enjoy transparent, manual renewals that seamlessly extend your access.",
+    "applePayOnly": "Secure payments powered by Apple Pay.",
+    "manualRenewNotice": "No auto-renewal surprises. You are always in control.",
+    "checkoutReady": "Secure checkout is ready. Your premium access will be unlocked instantly upon successful payment.",
+    "loadingCheckout": "Preparing secure checkout...",
+    "paymentSubmitted": "Payment processing. Your premium access will be activated momentarily.",
+    "signInRequired": "Please sign in to unlock your premium membership.",
+    "goToLogin": "Sign In to Continue",
+    "missingPublishableKey": "Our secure checkout is temporarily undergoing maintenance. Please try again shortly.",
+    "backToPractice": "Return to Practice",
+    "plans": {
+      "monthly": {
+        "title": "Monthly Access",
+        "price": "99.99 SAR"
+      },
+      "yearly": {
+        "title": "Annual Pass",
+        "price": "999.99 SAR"
+      }
+    }
   },
   "admin": {
     "nav": {

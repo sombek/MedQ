@@ -60,6 +60,45 @@ const rules = {
       isAdmin: "true in auth.ref('$user.profile.isAdmin')",
     },
   },
+
+  subscriptions: {
+    allow: {
+      view: "isOwner || isAdmin",
+      create: "isAdmin",
+      update: "isAdmin",
+      delete: "isAdmin",
+    },
+    bind: {
+      isOwner: "auth.id == data.userId",
+      isAdmin: "true in auth.ref('$user.profile.isAdmin')",
+    },
+  },
+
+  payments: {
+    allow: {
+      view: "isOwner || isAdmin",
+      create: "isAdmin",
+      update: "isAdmin",
+      delete: "isAdmin",
+    },
+    bind: {
+      isOwner: "auth.id == data.userId",
+      isAdmin: "true in auth.ref('$user.profile.isAdmin')",
+    },
+  },
+
+  dailyUsage: {
+    allow: {
+      view: "isOwner || isAdmin",
+      create: "isOwner || isAdmin",
+      update: "isOwner || isAdmin",
+      delete: "isAdmin",
+    },
+    bind: {
+      isOwner: "auth.id == data.userId",
+      isAdmin: "true in auth.ref('$user.profile.isAdmin')",
+    },
+  },
 } satisfies InstantRules;
 
 export default rules;

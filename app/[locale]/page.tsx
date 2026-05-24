@@ -4,7 +4,9 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import HeroSection from "@/components/shadcn-studio/blocks/hero-section-01/hero-section-01";
 import Header from "@/components/shadcn-studio/blocks/hero-section-01/header";
 import ValueProps from "@/components/shadcn-studio/blocks/hero-section-01/value-props";
+import PricingSection from "@/components/shadcn-studio/blocks/hero-section-01/pricing";
 import HowItWorks from "@/components/shadcn-studio/blocks/hero-section-01/how-it-works";
+import FaqSection from "@/components/shadcn-studio/blocks/hero-section-01/faq";
 import CtaStrip from "@/components/shadcn-studio/blocks/hero-section-01/cta-strip";
 import Footer from "@/components/shadcn-studio/blocks/hero-section-01/footer";
 import type { NavigationSection } from "@/components/shadcn-studio/blocks/hero-section-01/header";
@@ -33,6 +35,8 @@ export default async function HomePage({ params }: Props) {
   const navigationData: NavigationSection[] = [
     { title: t("home"), href: "/" },
     { title: t("howItWorks"), href: "#how-it-works" },
+    { title: t("pricing"), href: "#pricing" },
+    { title: t("faq"), href: "#faq" },
     { title: t("practice"), href: "/practice" },
   ];
 
@@ -56,6 +60,8 @@ export default async function HomePage({ params }: Props) {
         <HeroSection />
         <ValueProps />
         <HowItWorks />
+        <PricingSection />
+        <FaqSection />
         <CtaStrip />
       </main>
       <Footer />

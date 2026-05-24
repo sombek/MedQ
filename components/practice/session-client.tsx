@@ -11,6 +11,11 @@ import { QuestionCard } from "@/components/practice/question-card";
 import { useProfile } from "@/hooks/use-profile";
 import { Link } from "@/i18n/navigation";
 import { db } from "@/lib/db";
+import {
+  getDefaultDailyQuestionLimit,
+  getRiyadhDateKey,
+  isDailyLimitExceeded,
+} from "@/lib/billing/quota";
 import { pickNextQuestion, type QuestionRow } from "@/lib/questions";
 import type { SpecialtyId } from "@/lib/specialties";
 
@@ -27,11 +32,24 @@ type AnswerRecord = {
   question?: { id?: string; specialty?: string };
 };
 
+type SubscriptionRecord = {
+  id: string;
+  status: string;
+  endsAt: string;
+};
+
+type DailyUsageRecord = {
+  id: string;
+  dateKey: string;
+  questionsCount: number;
+};
+
 export function SessionClient({ specialty, mode }: Props) {
   const t = useTranslations("practice");
   const auth = db.useAuth();
   const { profile, isLoading: profileLoading } = useProfile();
   const userId = auth.user?.id;
+  const todayDateKey = useMemo(() => getRiyadhDateKey(new Date()), []);
 
   const { isLoading: dataLoading, data, error } = db.useQuery(
     userId
@@ -43,12 +61,30 @@ export function SessionClient({ specialty, mode }: Props) {
             $: { where: { userId } },
             question: {},
           },
+          subscriptions: {
+            $: {
+              where: { userId, status: "active" },
+              limit: 1,
+            },
+          },
+          dailyUsage: {
+            $: {
+              where: { userId, dateKey: todayDateKey },
+              limit: 1,
+            },
+          },
         }
       : null
   );
 
   const questions = (data?.questions ?? []) as QuestionRow[];
   const answers = (data?.answers ?? []) as AnswerRecord[];
+  const subscriptions = (data?.subscriptions ?? []) as SubscriptionRecord[];
+  const dailyUsage = (data?.dailyUsage ?? []) as DailyUsageRecord[];
+  const dailyLimit = getDefaultDailyQuestionLimit();
+  const todayUsage = dailyUsage[0]?.questionsCount ?? 0;
+  const activeSubscription = subscriptions.find((sub) => sub.status === "active");
+  const hasActiveSubscription = Boolean(activeSubscription);
 
   const pool = useMemo(() => {
     if (mode === "new") {
@@ -125,11 +161,19 @@ export function SessionClient({ specialty, mode }: Props) {
 
   const handleSubmit = async () => {
     if (selectedIndex === null || !userId) return;
+    if (!hasActiveSubscription && isDailyLimitExceeded(todayUsage, dailyLimit)) {
+      toast.error(t("freeLimitReached"));
+      return;
+    }
+
     setSubmitting(true);
     try {
       const answerId = crypto.randomUUID();
       const isCorrect = selectedIndex === current.correctIndex;
-      await db.transact(
+      const usageRow = dailyUsage[0];
+      const usageId = usageRow?.id ?? crypto.randomUUID();
+
+      await db.transact([
         db.tx.answers[answerId]
           .update({
             selectedIndex,
@@ -137,8 +181,18 @@ export function SessionClient({ specialty, mode }: Props) {
             answeredAt: new Date().toISOString(),
             userId,
           })
-          .link({ user: userId, question: current.id })
-      );
+          .link({ user: userId, question: current.id }),
+        ...(!hasActiveSubscription
+          ? [
+              db.tx.dailyUsage[usageId].update({
+                userId,
+                dateKey: todayDateKey,
+                questionsCount: (usageRow?.questionsCount ?? 0) + 1,
+                updatedAt: new Date().toISOString(),
+              }),
+            ]
+          : []),
+      ]);
       setSubmitted(true);
     } catch (err) {
       const message = err instanceof Error ? err.message : t("errorGeneric");
@@ -157,6 +211,31 @@ export function SessionClient({ specialty, mode }: Props) {
 
   return (
     <div className="mx-auto w-full max-w-3xl space-y-4">
+      <Card>
+        <CardContent className="p-4 text-sm">
+          {hasActiveSubscription ? (
+            <p>
+              {t("subscriptionActiveUntil", {
+                date: new Intl.DateTimeFormat(undefined, {
+                  dateStyle: "medium",
+                }).format(new Date(activeSubscription!.endsAt)),
+              })}
+            </p>
+          ) : (
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <p>
+                {t("dailyUsage", {
+                  used: todayUsage,
+                  limit: dailyLimit,
+                })}
+              </p>
+              <Button size="sm" render={<Link href="/billing" />}>
+                {t("renewNow")}
+              </Button>
+            </div>
+          )}
+        </CardContent>
+      </Card>
       <div className="flex justify-start">
         <Button
           variant="ghost"

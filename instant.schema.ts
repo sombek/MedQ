@@ -30,6 +30,40 @@ const _schema = i.schema({
       answeredAt: i.date().indexed(),
       userId: i.string().indexed(),
     }),
+
+    subscriptions: i.entity({
+      userId: i.string().indexed(),
+      planId: i.string().indexed(),
+      status: i.string().indexed(),
+      startsAt: i.date().indexed(),
+      endsAt: i.date().indexed(),
+      lastPaymentId: i.string().indexed(),
+      createdAt: i.date().indexed(),
+      updatedAt: i.date().indexed(),
+    }),
+
+    payments: i.entity({
+      userId: i.string().indexed(),
+      planId: i.string().indexed(),
+      moyasarPaymentId: i.string().indexed(),
+      amount: i.number(),
+      currency: i.string().indexed(),
+      status: i.string().indexed(),
+      paidAt: i.date().optional().indexed(),
+      sourceType: i.string().optional().indexed(),
+      sourceCompany: i.string().optional(),
+      sourceLast4: i.string().optional(),
+      tokenId: i.string().optional().indexed(),
+      rawMeta: i.json<Record<string, unknown>>().optional(),
+      createdAt: i.date().indexed(),
+    }),
+
+    dailyUsage: i.entity({
+      userId: i.string().indexed(),
+      dateKey: i.string().indexed(),
+      questionsCount: i.number(),
+      updatedAt: i.date().indexed(),
+    }),
   },
 
   links: {
@@ -53,7 +87,7 @@ const _schema = i.schema({
 });
 
 type _AppSchema = typeof _schema;
-interface AppSchema extends _AppSchema {}
+type AppSchema = _AppSchema;
 const schema: AppSchema = _schema;
 
 export type { AppSchema };
