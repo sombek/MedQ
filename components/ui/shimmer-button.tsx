@@ -41,7 +41,7 @@ function ShimmerButton({ children, className, ...props }: ShimmerButtonProps) {
     >
       <span
         className={cn(
-          'bg-background m-0.5 rounded-md px-4 py-2 text-sm font-medium text-foreground backdrop-blur-sm',
+          'bg-background m-0.5 rounded-[calc(0.5rem-2px)] px-4 py-2 text-sm font-medium text-foreground backdrop-blur-sm',
           className
         )}
       >
