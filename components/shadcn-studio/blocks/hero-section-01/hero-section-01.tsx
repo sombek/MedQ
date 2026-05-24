@@ -16,7 +16,7 @@ const HeroSection = async () => {
   ];
 
   return (
-    <section className="relative flex min-h-[70dvh] flex-1 flex-col justify-center overflow-x-hidden pt-6 sm:pt-16 lg:pt-24">
+    <section className="relative flex min-h-[70dvh] flex-col overflow-x-clip py-12 sm:py-16 lg:py-24">
       {/* Background layers */}
       <div
         aria-hidden

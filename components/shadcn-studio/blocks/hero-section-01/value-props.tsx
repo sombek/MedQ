@@ -36,5 +36,12 @@ export default async function ValueProps() {
     },
   ];
 
-  return <Features featuresList={featuresList} />;
+  return (
+    <Features
+      featuresList={featuresList}
+      heading={t("title")}
+      subtitle={t("subtitle")}
+      ctaLabel=""
+    />
+  );
 }

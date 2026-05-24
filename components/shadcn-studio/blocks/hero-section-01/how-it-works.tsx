@@ -37,7 +37,7 @@ export default async function HowItWorks() {
                 <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground">
                   <Icon size={24} weight="duotone" />
                 </div>
-                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-linear-to-r from-indigo-500 to-pink-500 text-[10px] font-bold text-white">
+                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
                   {step}
                 </span>
               </div>

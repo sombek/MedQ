@@ -4,8 +4,9 @@ import { useEffect, useMemo, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { toast } from "sonner";
 
+import PricingCards from "@/components/shadcn-studio/blocks/pricing-component-01/pricing-component-01";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "@/i18n/navigation";
 import { listPlans } from "@/lib/billing/plans";
 import { db } from "@/lib/db";
@@ -71,6 +72,19 @@ export function MoyasarApplePayForm() {
   const [isReady, setIsReady] = useState(false);
 
   const publishableKey = process.env.NEXT_PUBLIC_MOYASAR_PUBLISHABLE_KEY;
+
+  const pricingData = useMemo(
+    () =>
+      plans.map((plan) => ({
+        id: plan.id,
+        title: t(`plans.${plan.id}.title`),
+        description: t(`plans.${plan.id}.description`),
+        price: t(`plans.${plan.id}.price`),
+        highlighted: plan.id === "yearly",
+        features: [t("applePayOnly"), t("manualRenewNotice")],
+      })),
+    [plans, t]
+  );
 
   useEffect(() => {
     if (!publishableKey || !auth.user) {
@@ -149,43 +163,48 @@ export function MoyasarApplePayForm() {
 
   if (!auth.user) {
     return (
-      <Card>
-        <CardContent className="space-y-3 p-4">
-          <p className="text-sm">{t("signInRequired")}</p>
-          <Button render={<Link href="/login" />}>{t("goToLogin")}</Button>
-        </CardContent>
-      </Card>
+      <section className="bg-muted py-8 sm:py-16">
+        <div className="mx-auto max-w-xl px-4 sm:px-6 lg:px-8">
+          <Card className="shadow-none">
+            <CardContent className="space-y-4 p-6 text-center">
+              <p className="text-muted-foreground">{t("signInRequired")}</p>
+              <Button render={<Link href="/login" />}>{t("goToLogin")}</Button>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
     );
   }
 
   if (!publishableKey) {
     return (
-      <Card>
-        <CardContent className="p-4">
-          <p className="text-sm">{t("missingPublishableKey")}</p>
-        </CardContent>
-      </Card>
+      <section className="bg-muted py-8 sm:py-16">
+        <div className="mx-auto max-w-xl px-4 sm:px-6 lg:px-8">
+          <Card className="shadow-none">
+            <CardContent className="p-6 text-center">
+              <p className="text-muted-foreground text-sm">{t("missingPublishableKey")}</p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
     );
   }
 
   return (
-    <div className="grid gap-4 md:grid-cols-2">
-      {plans.map((plan) => (
-        <Card key={plan.id}>
-          <CardHeader>
-            <CardTitle>{t(`plans.${plan.id}.title`)}</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            <p className="text-lg font-semibold">{t(`plans.${plan.id}.price`)}</p>
-            <p className="text-muted-foreground text-xs">{t("applePayOnly")}</p>
-            <p className="text-muted-foreground text-xs">{t("manualRenewNotice")}</p>
-            <div id={`moyasar-${plan.id}`} className="min-h-12" />
-            {!isReady ? (
-              <p className="text-muted-foreground text-xs">{t("loadingCheckout")}</p>
-            ) : null}
-          </CardContent>
-        </Card>
-      ))}
-    </div>
+    <PricingCards
+      mode="grid"
+      heading={t("title")}
+      subtitle={t("subtitle")}
+      bestValueLabel={t("bestValue")}
+      pricingData={pricingData}
+      renderPlanAction={(planId) => (
+        <div className="space-y-2">
+          <div id={`moyasar-${planId}`} className="min-h-12" />
+          {!isReady ? (
+            <p className="text-muted-foreground text-xs">{t("loadingCheckout")}</p>
+          ) : null}
+        </div>
+      )}
+    />
   );
 }

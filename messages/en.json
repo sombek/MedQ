@@ -8,7 +8,8 @@
     "contact": "Contact",
     "signIn": "Sign In",
     "admin": "Admin",
-    "signOut": "Sign out"
+    "signOut": "Sign out",
+    "settings": "Settings"
   },
   "hero": {
     "badge": "The Ultimate QBank for Medical Students",
@@ -48,6 +49,7 @@
   },
   "valueProps": {
     "title": "The MedQ Advantage",
+    "subtitle": "Study smarter with premium content, comprehensive rationales, and analytics built for board exam success.",
     "card1Title": "Premium High-Yield Content",
     "card1Desc": "Questions rigorously peer-reviewed to match the exact difficulty and style of your most crucial exams.",
     "card2Title": "Comprehensive Rationales",
@@ -167,19 +169,29 @@
     "applePayOnly": "Secure payments powered by Apple Pay.",
     "manualRenewNotice": "No auto-renewal surprises. You are always in control.",
     "checkoutReady": "Secure checkout is ready. Your premium access will be unlocked instantly upon successful payment.",
+    "checkoutHeading": "You're almost there",
     "loadingCheckout": "Preparing secure checkout...",
     "paymentSubmitted": "Payment processing. Your premium access will be activated momentarily.",
     "signInRequired": "Please sign in to unlock your premium membership.",
     "goToLogin": "Sign In to Continue",
     "missingPublishableKey": "Our secure checkout is temporarily undergoing maintenance. Please try again shortly.",
+    "applePayUnavailable": "Apple Pay could not be initialized. Verify your Moyasar API keys and register this domain under Apple Pay Domains in the Moyasar dashboard.",
     "backToPractice": "Return to Practice",
+    "bestValue": "Best value",
+    "trustHeading": "Why members trust MedQ Premium",
+    "trustSubtitle": "Transparent billing, secure checkout, and full control over your subscription.",
+    "trustApplePayTitle": "Apple Pay checkout",
+    "trustManualRenewTitle": "Manual renewals",
+    "checkoutDescription": "Complete your payment to unlock unlimited practice access instantly.",
     "plans": {
       "monthly": {
         "title": "Monthly Access",
+        "description": "Flexible monthly access to unlimited MedQ practice.",
         "price": "99.99 SAR"
       },
       "yearly": {
         "title": "Annual Pass",
+        "description": "Save with a full year of unlimited MedQ practice.",
         "price": "999.99 SAR"
       }
     }
