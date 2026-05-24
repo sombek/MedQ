@@ -5,6 +5,8 @@ import { CheckCircleIcon, XCircleIcon } from "@phosphor-icons/react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { BorderBeam } from "@/components/ui/border-beam";
+import { RippleButton } from "@/components/ui/ripple-button";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import type { QuestionRow } from "@/lib/questions";
@@ -84,7 +86,7 @@ export function QuestionCard({
                 disabled={submitted}
                 onClick={() => onSelect(index)}
                 className={cn(
-                  "flex w-full items-start gap-3 rounded-lg border px-4 py-3 text-start transition-colors",
+                  "relative overflow-hidden flex w-full items-start gap-3 rounded-lg border px-4 py-3 text-start transition-colors",
                   state === "idle" && "hover:bg-accent",
                   state === "selected" && "border-primary bg-primary/5",
                   state === "correct" &&
@@ -94,6 +96,9 @@ export function QuestionCard({
                   submitted && "cursor-default"
                 )}
               >
+                {isSelected && !submitted && (
+                  <BorderBeam size={40} duration={3} colorFrom="var(--primary)" colorTo="var(--primary)" />
+                )}
                 <span className="text-muted-foreground font-mono text-sm">
                   {CHOICE_LABELS[index]}.
                 </span>
@@ -114,17 +119,21 @@ export function QuestionCard({
 
         <div className="flex justify-end">
           {submitted ? (
-            <Button size="lg" onClick={onNext}>
+            <Button
+              size="lg"
+              onClick={onNext}
+              className="relative overflow-hidden before:absolute before:inset-0 before:rounded-[inherit] before:bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.5)_50%,transparent_75%,transparent_100%)] before:bg-size-[250%_250%,100%_100%] before:bg-position-[200%_0,0_0] before:bg-no-repeat before:transition-[background-position_0s_ease] before:duration-1000 hover:before:bg-position-[-100%_0,0_0] dark:before:bg-[linear-gradient(45deg,transparent_25%,rgba(0,0,0,0.2)_50%,transparent_75%,transparent_100%)]"
+            >
               {t("next")}
             </Button>
           ) : (
-            <Button
+            <RippleButton
               size="lg"
               disabled={selectedIndex === null}
               onClick={onSubmit}
             >
               {t("submit")}
-            </Button>
+            </RippleButton>
           )}
         </div>
       </CardContent>
