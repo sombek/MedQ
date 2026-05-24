@@ -108,11 +108,8 @@
   "footer": {
     "tagline": "نُمكّن الجيل القادم من رواد الطب.",
     "product": "المنتج",
-    "howItWorks": "كيف يعمل",
-    "practice": "التدريب",
-    "legal": "قانوني",
-    "privacy": "سياسة الخصوصية",
-    "terms": "شروط الخدمة",
+    "account": "الحساب",
+    "billing": "الفوترة والخطط",
     "allRightsReserved": "جميع الحقوق محفوظة."
   },
   "language": {

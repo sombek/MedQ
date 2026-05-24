@@ -108,11 +108,8 @@
   "footer": {
     "tagline": "Empowering the next generation of medical professionals.",
     "product": "Product",
-    "howItWorks": "How It Works",
-    "practice": "Practice",
-    "legal": "Legal",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service",
+    "account": "Account",
+    "billing": "Billing & Plans",
     "allRightsReserved": "All rights reserved."
   },
   "language": {

@@ -52,7 +52,7 @@ const PricingCards = ({
   const [isAnnual, setIsAnnual] = useState(false)
 
   return (
-    <section className='bg-muted py-8 sm:py-16 lg:py-24'>
+    <section id='pricing' className='bg-muted py-8 sm:py-16 lg:py-24'>
       <div className='mx-auto max-w-7xl space-y-12 px-4 sm:px-6 lg:space-y-16 lg:px-8'>
         <div className='flex flex-col items-center gap-10 text-center'>
           <div className='flex flex-col items-center gap-4'>
