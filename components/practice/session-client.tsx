@@ -156,14 +156,24 @@ export function SessionClient({ specialty, mode }: Props) {
   };
 
   return (
-    <QuestionCard
-      question={current}
-      selectedIndex={selectedIndex}
-      submitted={submitted}
-      onSelect={(i) => !submitted && setSelectedIndex(i)}
-      onSubmit={() => !submitting && handleSubmit()}
-      onNext={handleNext}
-    />
+    <div className="mx-auto w-full max-w-3xl space-y-4">
+      <div className="flex justify-start">
+        <Button
+          variant="ghost"
+          render={<Link href={`/practice/${specialty}`} />}
+        >
+          {t("cancel")}
+        </Button>
+      </div>
+      <QuestionCard
+        question={current}
+        selectedIndex={selectedIndex}
+        submitted={submitted}
+        onSelect={(i) => !submitted && setSelectedIndex(i)}
+        onSubmit={() => !submitting && handleSubmit()}
+        onNext={handleNext}
+      />
+    </div>
   );
 }
 
