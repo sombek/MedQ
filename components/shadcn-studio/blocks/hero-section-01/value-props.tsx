@@ -4,42 +4,37 @@ import {
   ChartLineUpIcon,
   LightbulbIcon,
 } from "@phosphor-icons/react/dist/ssr";
-
-const cards = [
-  { key: "card1", icon: BookOpenIcon },
-  { key: "card2", icon: LightbulbIcon },
-  { key: "card3", icon: ChartLineUpIcon },
-] as const;
+import Features from "@/components/shadcn-studio/blocks/features-section-01/features-section-01";
 
 export default async function ValueProps() {
   const t = await getTranslations("valueProps");
 
-  return (
-    <section className="py-12 sm:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="mb-8 text-center text-2xl font-bold tracking-tight sm:mb-12 sm:text-4xl">
-          {t("title")}
-        </h2>
+  const featuresList = [
+    {
+      title: t("card1Title"),
+      description: t("card1Desc"),
+      icon: <BookOpenIcon size={24} />,
+      cardBorderColor: "hover:border-blue-500/50",
+      avatarBgColor: "bg-blue-500/10",
+      avatarTextColor: "text-blue-600",
+    },
+    {
+      title: t("card2Title"),
+      description: t("card2Desc"),
+      icon: <LightbulbIcon size={24} />,
+      cardBorderColor: "hover:border-amber-500/50",
+      avatarBgColor: "bg-amber-500/10",
+      avatarTextColor: "text-amber-600",
+    },
+    {
+      title: t("card3Title"),
+      description: t("card3Desc"),
+      icon: <ChartLineUpIcon size={24} />,
+      cardBorderColor: "hover:border-emerald-500/50",
+      avatarBgColor: "bg-emerald-500/10",
+      avatarTextColor: "text-emerald-600",
+    },
+  ];
 
-        <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0">
-          {cards.map(({ key, icon: Icon }) => (
-            <div
-              key={key}
-              className="w-[80vw] flex-shrink-0 snap-center flex flex-col items-center rounded-2xl bg-muted/50 p-6 text-center md:w-auto"
-            >
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <Icon size={24} weight="duotone" />
-              </div>
-              <h3 className="mb-2 text-lg font-semibold">
-                {t(`${key}Title`)}
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                {t(`${key}Desc`)}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  return <Features featuresList={featuresList} />;
 }

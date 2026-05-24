@@ -1,10 +1,8 @@
 import type { ReactElement } from 'react'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 
 import { cn } from '@/lib/utils'
-import { ArrowRightIcon } from "@phosphor-icons/react"
 
 type Features = {
   icon: ReactElement
@@ -21,16 +19,7 @@ const Features = ({ featuresList }: { featuresList: Features }) => {
       <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
         {/* Header */}
         <div className='mb-12 space-y-4 sm:mb-16 lg:mb-24'>
-          <h2 className='text-2xl font-semibold md:text-3xl lg:text-4xl'>Discover the Exclusive Perks Today</h2>
-          <p className='text-muted-foreground text-xl'>
-            Explore key features designed to enhance your shopping experience with intuitive navigation, robust
-            security, and seamless functionality.
-          </p>
-          <Button variant='outline' size='lg' render={<a href='#' />} nativeButton={false}>
-            See all features
-            <ArrowRightIcon
-            />
-          </Button>
+          <h2 className='text-2xl font-semibold md:text-3xl lg:text-4xl'>The MedQ Advantage</h2>
         </div>
 
         <div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3'>
