@@ -15,9 +15,9 @@ export default function CtaStrip() {
   const label = auth.user ? tNav("practice") : t("button");
 
   return (
-    <section className="bg-primary/5 py-16 sm:py-20">
+    <section className="bg-primary/5 py-10 sm:py-20">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 text-center sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-bold sm:text-3xl">{t("title")}</h2>
+        <h2 className="text-xl font-bold sm:text-3xl">{t("title")}</h2>
         <Link href={href}>
           <ShimmerButton className="px-8 py-3 text-base">{label}</ShimmerButton>
         </Link>

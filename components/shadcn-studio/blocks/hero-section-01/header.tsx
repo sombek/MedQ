@@ -71,11 +71,7 @@ const Header = ({ navigationData, signInLabel, className }: HeaderProps) => {
 
           <HeaderAuthActions signInLabel={signInLabel} className="max-md:hidden" />
 
-          <div className="flex items-center gap-3 md:hidden">
-            <LanguageSwitcher className="sm:hidden" />
-
-            <HeaderAuthActions signInLabel={signInLabel} />
-
+          <div className="flex items-center gap-2 md:hidden">
             <DropdownMenu>
               <DropdownMenuTrigger
                 render={<Button variant="outline" size="icon-lg" />}
@@ -89,6 +85,12 @@ const Header = ({ navigationData, signInLabel, className }: HeaderProps) => {
                     <a href={item.href}>{item.title}</a>
                   </DropdownMenuItem>
                 ))}
+                <div className="px-2 py-2 border-t mt-1">
+                  <LanguageSwitcher className="w-full justify-center" />
+                </div>
+                <div className="px-2 pb-2">
+                  <HeaderAuthActions signInLabel={signInLabel} className="w-full" />
+                </div>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>

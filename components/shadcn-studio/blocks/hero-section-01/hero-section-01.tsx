@@ -7,11 +7,11 @@ const HeroSection = async () => {
   const t = await getTranslations("hero");
 
   return (
-    <section className="relative flex min-h-[60dvh] flex-1 flex-col justify-center gap-12 overflow-x-hidden bg-gradient-to-b from-primary/5 to-transparent pt-8 sm:gap-16 sm:pt-16 lg:gap-24 lg:pt-24">
+    <section className="relative flex min-h-[50dvh] flex-1 flex-col justify-center gap-8 overflow-x-hidden bg-gradient-to-b from-primary/5 to-transparent pt-6 sm:gap-16 sm:pt-16 lg:gap-24 lg:pt-24">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-8 px-4 text-center sm:px-6 lg:px-8">
         <div className="bg-muted flex items-center gap-2.5 rounded-full border px-2 py-1 text-sm">
           <Badge>{t("badge")}</Badge>
-          <span className="text-muted-foreground">{t("subtitle")}</span>
+          <span className="hidden text-muted-foreground sm:inline">{t("subtitle")}</span>
         </div>
 
         <h1 className="text-3xl leading-[1.29167] font-bold text-balance sm:text-4xl lg:text-5xl">
