@@ -28,6 +28,23 @@
     "step3Title": "Learn & Improve",
     "step3Desc": "Review detailed explanations for every answer and track your progress over time."
   },
+  "valueProps": {
+    "title": "Why MedQ?",
+    "card1Title": "High-Yield Questions",
+    "card1Desc": "Practice questions designed to match real exam difficulty.",
+    "card2Title": "Detailed Explanations",
+    "card2Desc": "Understand the why behind every answer.",
+    "card3Title": "Track Your Progress",
+    "card3Desc": "See how you improve across specialties over time."
+  },
+  "ctaStrip": {
+    "title": "Ready to start practicing?",
+    "button": "Start Practicing"
+  },
+  "metadata": {
+    "title": "MedQ | Medical Question Bank for Students",
+    "description": "Master medical concepts and ace your exams. Practice high-yield questions with detailed explanations."
+  },
   "footer": {
     "tagline": "Master medical concepts and ace your exams.",
     "product": "Product",
