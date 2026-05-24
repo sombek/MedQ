@@ -28,6 +28,16 @@
     "step3Title": "Learn & Improve",
     "step3Desc": "Review detailed explanations for every answer and track your progress over time."
   },
+  "footer": {
+    "tagline": "Master medical concepts and ace your exams.",
+    "product": "Product",
+    "howItWorks": "How It Works",
+    "practice": "Practice",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "allRightsReserved": "All rights reserved."
+  },
   "language": {
     "en": "EN",
     "ar": "عربي"

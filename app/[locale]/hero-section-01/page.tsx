@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import HeroSection from "@/components/shadcn-studio/blocks/hero-section-01/hero-section-01";
 import Header from "@/components/shadcn-studio/blocks/hero-section-01/header";
 import HowItWorks from "@/components/shadcn-studio/blocks/hero-section-01/how-it-works";
+import Footer from "@/components/shadcn-studio/blocks/hero-section-01/footer";
 import type { NavigationSection } from "@/components/shadcn-studio/blocks/hero-section-01/header";
 import { routing } from "@/i18n/routing";
 
@@ -29,6 +30,7 @@ export default async function HeroSectionPage({ params }: Props) {
         <HeroSection />
         <HowItWorks />
       </main>
+      <Footer />
     </div>
   );
 }
