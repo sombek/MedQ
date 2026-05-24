@@ -5,7 +5,6 @@ import { useLocale, useTranslations } from "next-intl";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { useProfile } from "@/hooks/use-profile";
 import { Link } from "@/i18n/navigation";
 import { db } from "@/lib/db";
 import { SPECIALTIES, type SpecialtyId } from "@/lib/specialties";
@@ -18,7 +17,6 @@ export function SpecialtyPicker() {
   const t = useTranslations("practice");
   const locale = useLocale();
   const auth = db.useAuth();
-  const { profile } = useProfile();
   const userId = auth.user?.id;
 
   const { data } = db.useQuery(
@@ -44,8 +42,6 @@ export function SpecialtyPicker() {
       })
     ) as Record<SpecialtyId, { total: number; answered: number }>;
   }, [data]);
-
-  if (!auth.user || !profile?.isActive) return null;
 
   return (
     <div className="mx-auto w-full max-w-3xl">

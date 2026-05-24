@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { PracticeGuard } from "@/components/auth/practice-guard";
 import { SpecialtyHome } from "@/components/practice/specialty-home";
 import { ModeToggle } from "@/components/admin/mode-toggle";
 import { UserMenu } from "@/components/auth/user-menu";
@@ -45,7 +46,9 @@ export default async function SpecialtyPage({ params }: Props) {
         </div>
       </header>
       <main className="flex flex-1 items-start justify-center px-4 py-8 sm:py-12">
-        <SpecialtyHome specialty={specialty as SpecialtyId} />
+        <PracticeGuard>
+          <SpecialtyHome specialty={specialty as SpecialtyId} />
+        </PracticeGuard>
       </main>
     </div>
   );

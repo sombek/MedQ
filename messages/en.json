@@ -2,23 +2,31 @@
   "nav": {
     "home": "Home",
     "howItWorks": "How It Works",
-    "forClinics": "For Clinics",
+    "practice": "Practice",
     "contact": "Contact",
     "signIn": "Sign In",
-    "practice": "Practice",
     "admin": "Admin",
     "signOut": "Sign out"
   },
   "hero": {
-    "badge": "Real-time Updates",
-    "subtitle": "Smart queue management for clinics and patients",
-    "titleBefore": "Skip the Wait with",
-    "titleHighlight": "Smarter",
-    "titleAfter": "Medical Queues",
-    "descriptionLine1": "MedQ helps patients check wait times, get notified when it's their turn, and arrive at the right moment.",
-    "descriptionLine2": "Clinics reduce crowding and keep every visit running smoothly.",
-    "cta": "Sign in to start",
-    "imageAlt": "Modern hospital reception with patients waiting comfortably"
+    "badge": "For Medical Students",
+    "subtitle": "The smartest question bank to test your knowledge, review detailed explanations, and prepare for clinical practice.",
+    "titleBefore": "Master Medicine.",
+    "titleHighlight": "Ace",
+    "titleAfter": "Your Exams.",
+    "descriptionLine1": "Practice with high-yield questions designed to challenge your understanding.",
+    "descriptionLine2": "Track your progress and master every specialty.",
+    "cta": "Start Practicing",
+    "imageAlt": "Medical student studying on a laptop"
+  },
+  "howItWorks": {
+    "title": "How MedQ Works",
+    "step1Title": "Choose a Specialty",
+    "step1Desc": "Select from various medical fields to focus your study session.",
+    "step2Title": "Test Your Knowledge",
+    "step2Desc": "Answer high-yield questions designed to challenge your understanding.",
+    "step3Title": "Learn & Improve",
+    "step3Desc": "Review detailed explanations for every answer and track your progress over time."
   },
   "language": {
     "en": "EN",

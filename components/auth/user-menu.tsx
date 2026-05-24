@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { SignOutIcon, UserCircleIcon } from "@phosphor-icons/react";
 
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,7 +22,11 @@ export function UserMenu() {
   const router = useRouter();
   const auth = db.useAuth();
 
-  if (auth.isLoading || !auth.user) return null;
+  if (auth.isLoading) {
+    return <Skeleton className="size-10 rounded-md" />;
+  }
+
+  if (!auth.user) return null;
 
   const handleSignOut = async () => {
     await db.auth.signOut();

@@ -1,8 +1,7 @@
 import { getTranslations } from "next-intl/server";
 
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Link } from "@/i18n/navigation";
+import { HeroCta } from "@/components/auth/hero-cta";
 
 const HeroSection = async () => {
   const t = await getTranslations("hero");
@@ -58,13 +57,11 @@ const HeroSection = async () => {
           {t("descriptionLine2")}
         </p>
 
-        <Button size="lg" render={<Link href="/login" />} nativeButton={false}>
-          {t("cta")}
-        </Button>
+        <HeroCta />
       </div>
 
       <img
-        src="https://images.unsplash.com/photo-1519494021692-89bbd460d273?auto=format&fit=crop&w=1920&q=80"
+        src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1920&q=80"
         alt={t("imageAlt")}
         className="min-h-67 w-full object-cover"
       />

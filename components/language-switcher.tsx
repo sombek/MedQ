@@ -26,6 +26,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
           locale={item}
           className={cn(
             "rounded-md px-3 py-1.5 text-sm font-medium transition-colors",
+            item === "ar" && "[font-family:var(--font-ibm-plex-arabic)]",
             locale === item
               ? "bg-primary text-primary-foreground"
               : "text-muted-foreground hover:text-foreground"

@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { PracticeGuard } from "@/components/auth/practice-guard";
 import { SpecialtyPicker } from "@/components/practice/specialty-picker";
 import { ModeToggle } from "@/components/admin/mode-toggle";
 import { UserMenu } from "@/components/auth/user-menu";
@@ -41,7 +42,9 @@ export default async function PracticePage({ params }: Props) {
         </div>
       </header>
       <main className="flex flex-1 items-start justify-center px-4 py-8 sm:py-12">
-        <SpecialtyPicker />
+        <PracticeGuard>
+          <SpecialtyPicker />
+        </PracticeGuard>
       </main>
     </div>
   );
