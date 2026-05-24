@@ -39,11 +39,11 @@ export default function SpotlightCard({ children, className }: SpotlightCardProp
   return (
     <div
       className={cn(
-        "spotlight-card group bg-border relative overflow-hidden rounded-xl p-px transition-all duration-300 ease-in-out",
+        "spotlight-card group bg-border relative overflow-hidden rounded-none p-px transition-all duration-300 ease-in-out",
         className
       )}
     >
-      <div className="h-full rounded-[11px] bg-card p-6 transition-all duration-300 ease-in-out group-hover:bg-card/90 group-hover:backdrop-blur-[20px]">
+      <div className="h-full rounded-none bg-card p-6 transition-all duration-300 ease-in-out group-hover:bg-card/90 group-hover:backdrop-blur-[20px]">
         {children}
       </div>
       <div
