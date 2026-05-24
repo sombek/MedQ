@@ -34,14 +34,15 @@ export function LanguageSwitcher({ className }: { className?: string }) {
       ) : null}
 
       <ToggleGroup
-        type="single"
-        value={locale}
+        multiple={false}
+        value={[locale]}
         spacing={0}
         variant="outline"
         size="sm"
-        onValueChange={(value) => {
-          if (value && value !== locale) {
-            router.replace(pathname, { locale: value as Locale });
+        onValueChange={(values) => {
+          const next = values[0];
+          if (next && next !== locale) {
+            router.replace(pathname, { locale: next as Locale });
           }
         }}
         className={cn("w-fit", isFullWidth && "w-full flex-1")}
