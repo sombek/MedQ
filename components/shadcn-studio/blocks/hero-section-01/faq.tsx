@@ -1,35 +1,45 @@
 import { getTranslations } from "next-intl/server";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+const FAQ_KEYS = ["q1", "q2", "q3", "q4"] as const;
 
 export default async function FaqSection() {
   const t = await getTranslations("landingFaq");
-  const items = ["q1", "q2", "q3", "q4"] as const;
 
   return (
     <section id="faq" className="py-16 sm:py-20">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-8 text-center">
+        <div className="mb-10 text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             {t("title")}
           </h2>
-          <p className="text-muted-foreground mt-3 text-sm sm:text-base">
+          <p className="mt-3 text-sm text-muted-foreground sm:text-base">
             {t("subtitle")}
           </p>
         </div>
 
-        <div className="space-y-3">
-          {items.map((item) => (
-            <details key={item} className="bg-muted/40 rounded-xl border p-4">
-              <summary className="cursor-pointer font-medium">
-                {t(`${item}.question`)}
-              </summary>
-              <p className="text-muted-foreground mt-3 text-sm leading-6">
-                {t(`${item}.answer`)}
-              </p>
-            </details>
+        <Accordion className="space-y-3">
+          {FAQ_KEYS.map((key) => (
+            <AccordionItem
+              key={key}
+              value={key}
+              className="rounded-xl border bg-muted/30 px-4 data-[state=open]:bg-muted/50"
+            >
+              <AccordionTrigger className="py-4 font-medium hover:no-underline">
+                {t(`${key}.question`)}
+              </AccordionTrigger>
+              <AccordionContent className="pb-4 text-sm leading-6 text-muted-foreground">
+                {t(`${key}.answer`)}
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </div>
+        </Accordion>
       </div>
     </section>
   );
 }
-
