@@ -1,5 +1,5 @@
 import Features from '@/components/shadcn-studio/blocks/features-section-01/features-section-01'
-import { SwatchesIcon, ShieldSlashIcon, MagnifyingGlassIcon, StarIcon, DeviceMobileCameraIcon, LockKeyIcon } from "@phosphor-icons/react"
+import { SwatchesIcon, ShieldSlashIcon, MagnifyingGlassIcon, StarIcon, DeviceMobileCameraIcon, LockKeyIcon } from "@phosphor-icons/react/dist/ssr"
 
 const featuresList = [
   {

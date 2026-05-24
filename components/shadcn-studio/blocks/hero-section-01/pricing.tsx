@@ -1,6 +1,8 @@
 import { getTranslations } from "next-intl/server";
 
 import PricingCards from "@/components/shadcn-studio/blocks/pricing-component-01/pricing-component-01";
+import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 
 export default async function PricingSection() {
   const t = await getTranslations("landingPricing");
@@ -29,6 +31,11 @@ export default async function PricingSection() {
       annuallyLabel={t("toggleYearly")}
       ctaLabel={t("cta")}
       ctaHref="/billing"
+      cta={
+        <Button size="lg" className="w-fit" render={<Link href="/billing" />}>
+          {t("cta")}
+        </Button>
+      }
       currency="SAR "
     />
   );

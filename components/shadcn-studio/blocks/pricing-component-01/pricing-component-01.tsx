@@ -3,7 +3,6 @@
 import type { ReactNode } from 'react'
 import { useState } from 'react'
 
-import { Link } from '@/i18n/navigation'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -29,6 +28,7 @@ type Props = {
   annuallyLabel?: string
   ctaLabel?: string
   ctaHref?: string
+  cta?: ReactNode
   currency?: string
   mode?: 'toggle' | 'grid'
   renderPlanAction?: (planId: string) => ReactNode
@@ -43,6 +43,7 @@ const PricingCards = ({
   annuallyLabel = 'Annually',
   ctaLabel = 'Get Started',
   ctaHref = '/',
+  cta,
   currency = '$',
   mode = 'toggle',
   renderPlanAction,
@@ -109,9 +110,11 @@ const PricingCards = ({
               mode === 'grid' && renderPlanAction ? (
                 renderPlanAction(plan.id)
               ) : (
-                <Button size='lg' className='w-fit' render={<Link href={ctaHref} />}>
-                  {ctaLabel}
-                </Button>
+                cta ?? (
+                  <Button size='lg' className='w-fit' render={<a href={ctaHref} />} nativeButton={false}>
+                    {ctaLabel}
+                  </Button>
+                )
               )
 
             return (
