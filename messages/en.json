@@ -66,6 +66,8 @@
     "featureApplePay": "Secure, frictionless checkout via Apple Pay",
     "featureManualRenew": "No hidden fees. Manual renewal puts you in control.",
     "cta": "Unlock Full Access",
+    "toggleMonthly": "Monthly",
+    "toggleYearly": "Yearly",
     "plans": {
       "monthly": {
         "name": "Monthly",

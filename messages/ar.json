@@ -66,6 +66,8 @@
     "featureApplePay": "دفع آمن وسلس عبر Apple Pay",
     "featureManualRenew": "بدون رسوم خفية. تجديد يدوي يضعك في موقع التحكم.",
     "cta": "اشترك الآن للوصول الكامل",
+    "toggleMonthly": "شهري",
+    "toggleYearly": "سنوي",
     "plans": {
       "monthly": {
         "name": "شهري",
