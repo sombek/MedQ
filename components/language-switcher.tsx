@@ -1,40 +1,66 @@
 "use client";
 
+import { GlobeHemisphereWestIcon } from "@phosphor-icons/react";
 import { useLocale, useTranslations } from "next-intl";
 
-import { Link, usePathname } from "@/i18n/navigation";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 const locales = ["en", "ar"] as const;
 
+type Locale = (typeof locales)[number];
+
 export function LanguageSwitcher({ className }: { className?: string }) {
-  const locale = useLocale();
+  const locale = useLocale() as Locale;
   const pathname = usePathname();
+  const router = useRouter();
   const t = useTranslations("language");
+  const isFullWidth = className?.includes("w-full");
 
   return (
     <div
       className={cn(
-        "flex items-center rounded-lg border p-0.5",
+        "inline-flex items-center gap-2",
+        isFullWidth && "w-full",
         className
       )}
     >
-      {locales.map((item) => (
-        <Link
-          key={item}
-          href={pathname}
-          locale={item}
-          className={cn(
-            "rounded-md px-3 py-1.5 text-sm font-medium transition-colors",
-            item === "ar" && "[font-family:var(--font-ibm-plex-arabic)]",
-            locale === item
-              ? "bg-primary text-primary-foreground"
-              : "text-muted-foreground hover:text-foreground"
-          )}
-        >
-          {t(item)}
-        </Link>
-      ))}
+      {!isFullWidth ? (
+        <GlobeHemisphereWestIcon
+          className="text-muted-foreground size-4 shrink-0"
+          aria-hidden
+        />
+      ) : null}
+
+      <ToggleGroup
+        type="single"
+        value={locale}
+        spacing={0}
+        variant="outline"
+        size="sm"
+        onValueChange={(value) => {
+          if (value && value !== locale) {
+            router.replace(pathname, { locale: value as Locale });
+          }
+        }}
+        className={cn("w-fit", isFullWidth && "w-full flex-1")}
+      >
+        {locales.map((item) => (
+          <ToggleGroupItem
+            key={item}
+            value={item}
+            aria-label={t(item)}
+            className={cn(
+              "min-w-14 px-3 data-[state=on]:bg-primary data-[state=on]:text-primary-foreground",
+              isFullWidth && "flex-1",
+              item === "ar" && "[font-family:var(--font-ibm-plex-arabic)]"
+            )}
+          >
+            {t(item)}
+          </ToggleGroupItem>
+        ))}
+      </ToggleGroup>
     </div>
   );
 }
